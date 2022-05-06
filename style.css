@@ -1,9 +1,15 @@
 * {
     text-align: center;
 }
+
+body {
+  background-color: navy;
+}
+
 h2 {
     text-align: right;
 }
+
 h3 {
     text-align: justify;
 }
