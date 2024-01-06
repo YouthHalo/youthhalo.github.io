@@ -9,4 +9,3 @@ if (readme) {
     text = text.replace(/\n/g, "<br>");
     readme.innerHTML = text;
 }
-

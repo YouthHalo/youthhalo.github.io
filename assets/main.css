@@ -7,6 +7,10 @@ html {
 * {
     text-align: center !important;
     font-family: "helvetica" !important;
+    /* change the color of the text based on the gradient background */
+    color: white;
+    /* change the color of the text based on the gradient background */
+    text-shadow: 1px 1px 1px #000;
 }
 
 @keyframes gradient {
@@ -22,13 +26,15 @@ html {
 }
 body {
 	/*gradient background, from navy blue to light grey diagonally 45 degrees which will be moved by javascript*/
-  background: linear-gradient(45deg, #3bc4ff, #aee7ff);
+  background: linear-gradient(45deg, #242424, #686868);
   background-size: 1000% 1000%;
   animation: gradient 10s normal infinite;
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+
 
   .topnav {
       background-color: rgb(83, 175, 158);
