@@ -26,8 +26,8 @@ html {
 }
 body {
 	/*gradient background, from navy blue to light grey diagonally 45 degrees which will be moved by javascript*/
-  background: linear-gradient(45deg, #242424, #686868);
-  background-size: 1000% 1000%;
+  background: linear-gradient(30deg, #030303, #181818);
+  background-size: 400% 400%;
   animation: gradient 10s normal infinite;
   height: 100%;
   margin: 0;
