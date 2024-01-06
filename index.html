@@ -4,59 +4,84 @@
         <a class="active" href="#home">Home</a>
         <a href="placeholder/examplelikethis ->">Placeholder</a>
     </div>
-<head>
-    <meta charset="UTF-8">
-    <title>YouthHalo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='./assets/main.css'>
+    <head>
+        <link rel='stylesheet' href='./assets/main.css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-</head>
-<body>
-    <!-- partial:index.partial.html -->
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!--Formatting .md files-->
+        <script src="./assets/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
+
+        <meta charset="UTF-8">
+        <title>YouthHalo's Amazing Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <!-- partial:index.partial.html -->
+        <script>
+            var today = new Date();
+            var hourNow = today.getHours();
+            var greeting;
+            if (hourNow > 18) {
+                greeting = 'Good evening!';
+            } else if (hourNow > 12) {
+                greeting = 'Good afternoon!';
+            } else if (hourNow > 0) {
+                greeting = 'Good morning!';
+            } else {
+                greeting = 'Welcome!';
+            }
+            document.write('<h3>' + greeting + " This is the website of" + '</h3>');
+        </script>
+        <h1>YouthHalo</h1>
+        <div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
+        <h3> A work in progress.</h3>
+        </div>
+        <h6> Aspiring Backend Dev tries Frontend for the first time.</h6>
+
+    </body>    
+    <!-- import my own non-archived repositories from github and display them -->
     <script>
-        var today = new Date();
-        var hourNow = today.getHours();
-        var greeting;
-        if (hourNow > 18) {
-            greeting = 'Good evening!';
-        } else if (hourNow > 12) {
-            greeting = 'Good afternoon!';
-        } else if (hourNow > 0) {
-            greeting = 'Good morning!';
-        } else {
-            greeting = 'Welcome!';
-        }
-        document.write('<h3>' + greeting + " This is the website of" + '</h3>');
-    </script>
-    <h1 class="text-light">YouthHalo</h1>
-    <div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
-    <h2> A work in progress.</h2>
-    </div>
-    <h6 class="text-light small font-weight-bold"> Aspiring Backend Dev tries Frontend for the first time.</h6>
+        $(function() {
+            $.getJSON("https://api.github.com/users/YouthHalo/repos?per_page=100&sort=created&direction=desc", function(data) {
+                $.each(data, function(index, value) {
+                    if (value.archived == false && value.name != "YouthHalo") {
+                        // Create a Bootstrap card for each repository
+                        var card = $("<div class='card' style='width: 18rem;'></div>");
+                        var cardBody = $("<div class='card-body'></div>");
+                        var cardTitle = $("<h5 class='card-title'></h5>").text(value.name);
+                        var cardLink = $("<a href='#' class='btn btn-primary'>Go to Repository</a>").attr("href", value.html_url);
+                        cardBody.append(cardTitle, cardLink);
+                        card.append(cardBody);
+                        $("#repos").append(card);
 
-</body>    
-<!-- import my own non-archived repositories from github and display them -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(function() {
-        $.getJSON("https://api.github.com/users/YouthHalo/repos", function(data) {
-            $.each(data, function(index, value) {
-                
-                if (value.archived == false && value.name != "YouthHalo") {
-                    $("#repos").append("<li><a href='" + value.html_url + "'>" + value.name + "</a></li>");
-                }
+                        $.getJSON("https://api.github.com/repos/YouthHalo/" + value.name + "/readme", function(data) {
+                            var decoded = atob(data.content);
+                            var html = marked(decoded);
+                            $('#readme').html(html);
+                        }).fail(function() {
+                            console.log("An error occurred while loading the README.");
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h3>My Repositories</h3>
-            <ul id="repos"></ul>
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>My Repositories</h3>
+                <ul id="repos"></ul>
+                <!--display the readme-->
+                <h3>Readme</h3>
+                <div id="readme"></div>
+
+                
+            </div>
         </div>
     </div>
-</div>
-
-    <script src="./assets/main.js"></script>
 </html>
