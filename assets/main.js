@@ -1,12 +1,13 @@
-//move the gradient background found in main.css back and forth like a parralax effect to the scroll
+//move the gradient background found in main.css back and forth to give the illusion of infinite scrolling
+var scrollSpeed = 1;
+var current = 0;
+var direction = 'h';
+function bgscroll(){
+    current -= scrollSpeed;
+    $('.gradient').css("background-position", (direction == 'h') ? current+"px 0" : "0 " + current+"px");
+}
+setInterval("bgscroll()", 20);
 
-$document.ready(function() {
-    $window.scroll(function() {
-        var scroll = $window.scrollTop();
-        var slowScroll = scroll / 2;
-        $('.main').css('background-position', 'center -' + slowScroll + 'px');
-    });
-});
 //Import my github repositories and give them a nice box with a link to the repository and a link to the live site
 
 var github = 'https://api.github.com/users/YouthHalo/repos';
