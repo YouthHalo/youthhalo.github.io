@@ -7,8 +7,32 @@
     <title>YouthHalo</title>
   </head>
   <body>
-    <script src="main.js"></script>
     <h1>Hi, Im YouthHalo</h1>
     <p>Template Stuff Template Stuff</p>
+    <!-- make cards that can show my github projects with a api using the javascript file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function() {
+        $.getJSON("https://api.github.com/users/YouthHalo/repos", function(data) {
+            $.each(data, function(index, value) {
+
+                if (value.archived == false && value.name != "YouthHalo") {
+                    $("#repos").append("<li><a href='" + value.html_url + "'>" + value.name + "</a></li>");
+                }
+            });
+        });
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>My Repositories</h3>
+            <ul id="repos"></ul>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>
