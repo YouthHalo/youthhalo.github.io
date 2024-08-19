@@ -4,8 +4,12 @@
 }
 
 .repo {
+    outline: 1px black solid;
+}
+
+.card {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    min-width: 200px;
     justify-content: center;
 }

@@ -22,7 +22,6 @@
     <p>Template Stuff Template Stuff</p>
     <!-- make cards that can show my github projects with a api using the javascript file-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script>
       $(function () {
         $.getJSON(
@@ -31,11 +30,11 @@
             $.each(data, function (index, value) {
               if (value.archived == false && value.name != "YouthHalo") {
                 $("#repos").append(
-                  "<li><a class='repo' href='" +
+                  "<div class='card'><a class='repo' href='" +
                     value.html_url +
                     "'>" +
                     value.name +
-                    "</a></li>"
+                    "</a></div>"
                 );
               }
             });
