@@ -59,27 +59,56 @@ window.addEventListener("load", function () {
 
   const img = document.createElement("img");
   img.src = "https://avatars.githubusercontent.com/u/69648246?v=4";
-  img.style.position = "absolute";
   img.style.position = "fixed";
   img.style.opacity = "1";
   img.style.top = "50%";
   img.style.left = "50%";
   img.style.borderRadius = "100%";
-  img.style.transform = "translate(-50%, -50%)";
+  img.style.transform = "translate(-50%, -60%)";
   img.style.maxWidth = "50%";
   img.style.maxHeight = "50%";
   img.style.transition = "opacity 1s";
   img.style.zIndex = "1001";
   wrapper.appendChild(img);
   document.body.appendChild(img);
+
+  const loadingText = document.createElement("p");
+  loadingText.style.position = "absolute";
+  loadingText.style.top = "55%";
+  loadingText.style.left = "50%";
+  loadingText.style.transform = "translate(-50%, -90%)";
+  loadingText.style.color = "#000";
+  loadingText.style.fontSize = "2rem";
+  loadingText.style.textAlign = "center";
+
+  let loadingTextContent = "Loading";
+  let loadingTextContentIndex = 0;
+
+  const loadingTextInterval = setInterval(() => {
+    loadingTextContentIndex = (loadingTextContentIndex + 1) % 4;
+    loadingTextContent =
+      loadingTextContentIndex === 0
+        ? "Loading"
+        : loadingTextContentIndex === 1
+        ? "Loading."
+        : loadingTextContentIndex === 2
+        ? "Loading.."
+        : "Loading...";
+    loadingText.textContent = loadingTextContent;
+  }, 500);
+
+  wrapper.appendChild(loadingText);
+
   setTimeout(() => {
     img.style.opacity = "0";
     wrapper.style.opacity = "0";
+    clearInterval(loadingTextInterval);
     setTimeout(() => {
       wrapper.remove();
       img.remove();
+      loadingText.remove();
     }, 1000);
-  }, 1000);
+  }, 2000);
 });
 
 
