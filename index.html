@@ -9,15 +9,14 @@
 
   <body>
     <div class="topnav">
-
       <a class="left" href="index.html">Home</a>
       <div class="right">
         <a href="https://github.com/YouthHalo">Github</a>
         <a href="https://www.codepen.io/YouthHalo">Codepen</a>
       </div>
     </div>
-
-
+    
+    
     <h1>Hi, Im YouthHalo</h1>
     <p>Template Stuff Template Stuff</p>
     <!-- make cards that can show my github projects with a api using the javascript file-->
@@ -34,7 +33,9 @@
                     value.html_url +
                     "'>" +
                     value.name +
-                    "</a></div>"
+                    "</a> <a class='readme' href='" +
+                    (value.html_url + "/blob/main/README.md") +
+                    "'>README.md</a></div>" //might remove this as it doesnt look good atm
                 );
               }
             });

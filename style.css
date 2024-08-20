@@ -5,11 +5,33 @@
 
 .repo {
     outline: 1px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 
 .card {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     min-width: 200px;
+    min-height: 150px;
     justify-content: center;
 }
+
+.topnav {
+    width: 100%;
+}
+
+.sticky {
+    position: fixed;
+    background-color: gray;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 20px
+    }
