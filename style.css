@@ -3,20 +3,26 @@
     justify-content: space-between;
 }
 
-.repo {
+
+
+.card {
     outline: 1px black solid;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    
+    min-width: 200px;
+    min-height: 150px;
+    justify-content: space-around;
 }
 
-.card {
+.cards {
+    outline: 1px black solid;
     display: inline-flex;
     flex-wrap: wrap;
     min-width: 200px;
     min-height: 150px;
     justify-content: center;
+    text-align-last: center;
+    margin: 10px;
 }
 
 .topnav {
