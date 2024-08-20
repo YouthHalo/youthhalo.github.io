@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // Wait for the page to load completely
 window.addEventListener("load", function () {
 
@@ -74,9 +73,9 @@ window.addEventListener("load", function () {
 
   const loadingText = document.createElement("p");
   loadingText.style.position = "absolute";
-  loadingText.style.top = "55%";
+  loadingText.style.bottom = "10%";
   loadingText.style.left = "50%";
-  loadingText.style.transform = "translate(-50%, -90%)";
+  loadingText.style.transform = "translate(-50%, 0%)";
   loadingText.style.color = "#000";
   loadingText.style.fontSize = "2rem";
   loadingText.style.textAlign = "center";
@@ -112,3 +111,12 @@ window.addEventListener("load", function () {
 });
 
 
+const modelViewer = document.querySelector("model-viewer");
+modelViewer.onmouseenter = function(){
+    modelViewer.style.transition = "transform 0.5s";
+    modelViewer.style.transform = "scale(1.1)";
+}
+modelViewer.onmouseleave = function(){
+  modelViewer.style.transition = "transform 0.5s";
+  modelViewer.style.transform = "scale(1)";
+}

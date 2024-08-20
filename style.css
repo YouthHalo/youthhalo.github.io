@@ -5,6 +5,19 @@ body {
 .topnav {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+
+model-viewer {
+    shape-rendering: optimizeSpeed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    margin: auto;
+    background-color: white;
+
 }
 
 .card {
@@ -36,10 +49,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.topnav {
-    width: 100%;
 }
 
 .sticky {
