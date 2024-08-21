@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentScrollY > lastScrollY && currentScrollY > 20) {
       // Scrolling down
+      console.log("hi");
       if (!isSticky) {
         topnav.classList.add("sticky");
         isSticky = true;

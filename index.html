@@ -20,6 +20,7 @@
         <a href="https://www.codepen.io/YouthHalo">Codepen</a>
       </div>
     </div>
+    
     <script
       type="module"
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
@@ -32,7 +33,7 @@
       shadow-softness="1"
       tone-mapping="neutral"
       exposure="1"
-      camera-orbit="-90deg 75deg 4m"
+      camera-orbit="-180deg 75deg 4m"
       field-of-view="30deg"
       auto-rotate
     >
@@ -52,11 +53,11 @@
             $.each(data, function (index, value) {
               if (value.archived == false && value.name != "YouthHalo") {
                 $("#repos").append(
-                  "<div class='cards'><div class='card'><a class='repo' href='" +
+                  "<div class='card'><a class='repo' href='" +
                     value.html_url +
                     "'>" +
                     value.name +
-                    "</a></div></div>"
+                    "</a></div>"
                 ); //Removed README, was kinda useless
               }
             });
@@ -65,10 +66,11 @@
       });
     </script>
 
-    <div class="repos">
+    <div class="cards">
       <h3>All Repositories</h3>
       <ul id="repos"></ul>
     </div>
     <script src="main.js"></script>
+
   </body>
 </html>

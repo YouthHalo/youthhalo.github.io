@@ -1,16 +1,29 @@
 body {
   font-family: "Roboto", monospace;
   cursor: url("assets/cursor.png"), auto;
-  background-color: darkgoldenrod;
+  background-color: #222222;
   font-size: 1.5vw;
   text-align: center;
+  color: whitesmoke;
 }
 
 
 .topnav {
   display: flex;
   justify-content: space-between;
+  gap: 9vw;
   width: 100%;
+}
+
+.sticky {
+  width: 98%; /*oddly necessary */
+  position: fixed;
+  background-color: lightgray;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1vw;
 }
 
 model-viewer {
@@ -29,13 +42,14 @@ model-viewer:hover {
 }
 
 .card {
-  outline: 1px black solid;
-  border-radius: 24px;
+  outline: 0.1vw black solid;
+  border-radius: 1vw;
   display: flex;
   flex-direction: column;
-  min-width: 250px;
-  min-height: 230px;
-  padding-top: 20px;
+  min-width: 20vw;
+  min-height: 18vw;
+  margin: 2vw;
+  justify-content: center;
 }
 
 .cards {
@@ -44,31 +58,27 @@ model-viewer:hover {
   justify-content: center;
   text-align: center;
   align-items: center;
-  margin: 10px;
-}
-
-.repos {
   text-decoration: none;
   color: black;
-  text-align: center;
 }
 
+.repo {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  list-style-type: none;
+  text-decoration: none;
+  color: lightblue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 #repos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.sticky {
-  width: 99%;
-  position: fixed;
-  background-color: lightgray;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 200px;
 }
