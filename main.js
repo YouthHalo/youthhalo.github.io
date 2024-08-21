@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(timeoutId);
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY && currentScrollY > 0) {
+    if (currentScrollY > lastScrollY && currentScrollY > 20) {
       // Scrolling down
       if (!isSticky) {
         topnav.classList.add("sticky");
@@ -41,10 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // Wait for the page to load completely
 window.addEventListener("load", function () {
-
+  //loading screen
   const wrapper = document.createElement("div");
   wrapper.className = "loading-wrapper";
   wrapper.style.position = "fixed";
@@ -54,7 +53,6 @@ window.addEventListener("load", function () {
   wrapper.style.height = "100%";
   wrapper.style.backgroundColor = "white";
   wrapper.style.transition = "opacity 2s";
-  document.body.style.background = "white";
   document.body.appendChild(wrapper);
 
   const img = document.createElement("img");
@@ -66,28 +64,28 @@ window.addEventListener("load", function () {
   img.style.left = "50%";
   img.style.borderRadius = "100%";
   img.style.transform = "translate(-50%, -60%)";
-  img.style.maxWidth = "50%";
-  img.style.maxHeight = "50%";
+  img.style.maxWidth = "20vw";
+  img.style.maxHeight = "20vw";
   img.style.transition = "opacity 1s";
   img.style.zIndex = "1001";
   wrapper.appendChild(img);
-  document.body.appendChild(img);
 
   const loadingText = document.createElement("p");
   loadingText.className = "loading-wrapper";
+  loadingText.textContent = "Loading";
   loadingText.style.position = "absolute";
   loadingText.style.bottom = "10%";
   loadingText.style.left = "50%";
   loadingText.style.transform = "translate(-50%, 0%)";
   loadingText.style.color = "#000";
-  loadingText.style.fontSize = "2rem";
+  loadingText.style.fontSize = "3vw";
   loadingText.style.textAlign = "center";
-
+  wrapper.appendChild(loadingText);
   let loadingTextContent = "Loading";
   let loadingTextContentIndex = 0;
 
   const loadingTextInterval = setInterval(() => {
-    loadingTextContentIndex = (loadingTextContentIndex + 1) % 4;
+    loadingTextContentIndex = (loadingTextContentIndex + 1) % 5;
     loadingTextContent =
       loadingTextContentIndex === 0
         ? "Loading"
@@ -95,7 +93,9 @@ window.addEventListener("load", function () {
         ? "Loading."
         : loadingTextContentIndex === 2
         ? "Loading.."
-        : "Loading...";
+        : loadingTextContentIndex === 3
+        ? "Loading..."
+        : "Done!";
     loadingText.textContent = loadingTextContent;
   }, 500);
 
@@ -104,6 +104,7 @@ window.addEventListener("load", function () {
   setTimeout(() => {
     img.style.opacity = "0";
     wrapper.style.opacity = "0";
+    document.body.style.overflow = "overlay";
     clearInterval(loadingTextInterval);
     setTimeout(() => {
       wrapper.remove();
