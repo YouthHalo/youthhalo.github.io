@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", function () {
 
   const wrapper = document.createElement("div");
+  wrapper.className = "loading-wrapper";
   wrapper.style.position = "fixed";
   wrapper.style.top = "0";
   wrapper.style.left = "0";
@@ -58,6 +59,7 @@ window.addEventListener("load", function () {
 
   const img = document.createElement("img");
   img.src = "https://avatars.githubusercontent.com/u/69648246?v=4";
+  img.className = "loading-wrapper";
   img.style.position = "fixed";
   img.style.opacity = "1";
   img.style.top = "50%";
@@ -72,6 +74,7 @@ window.addEventListener("load", function () {
   document.body.appendChild(img);
 
   const loadingText = document.createElement("p");
+  loadingText.className = "loading-wrapper";
   loadingText.style.position = "absolute";
   loadingText.style.bottom = "10%";
   loadingText.style.left = "50%";
@@ -110,13 +113,4 @@ window.addEventListener("load", function () {
   }, 2000);
 });
 
-
-const modelViewer = document.querySelector("model-viewer");
-modelViewer.onmouseenter = function(){
-    modelViewer.style.transition = "transform 0.5s";
-    modelViewer.style.transform = "scale(1.1)";
-}
-modelViewer.onmouseleave = function(){
-  modelViewer.style.transition = "transform 0.5s";
-  modelViewer.style.transform = "scale(1)";
-}
+//Removed JS version of hover size effect due to being much smoother in CSS
