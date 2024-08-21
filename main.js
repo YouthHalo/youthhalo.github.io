@@ -13,34 +13,15 @@ if (n >= 5 && n < 12) {
 
 document.querySelector("h1").innerHTML = greeting + " Im YouthHalo";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const topnav = document.querySelector(".topnav");
-  let lastScrollY = window.scrollY;
-  let isSticky = false;
-  let timeoutId = null;
-
-  window.addEventListener("scroll", function () {
-    clearTimeout(timeoutId);
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > lastScrollY && currentScrollY > 20) {
-      // Scrolling down
-      console.log("hi");
-      if (!isSticky) {
-        topnav.classList.add("sticky");
-        isSticky = true;
-      }
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up
-      if (isSticky) {
-        topnav.classList.remove("sticky");
-        isSticky = false;
-      }
-    }
-
-    lastScrollY = currentScrollY;
-  });
-});
+window.onscroll = function() {scrollFunction()};
+var topnav = document.getElementById("topnav");
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    topnav.style.top = "0";
+  } else {
+    topnav.style.top = "-4vw";
+  }
+}
 
 // realised that a loading screen is a bad practice
 

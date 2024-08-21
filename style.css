@@ -8,22 +8,19 @@ body {
 }
 
 
-.topnav {
+#topnav {
   display: flex;
   justify-content: space-between;
-  gap: 9vw;
-  width: 100%;
-}
-
-.sticky {
-  width: 98%; /*oddly necessary */
+  justify-self: center;
   position: fixed;
-  background-color: lightgray;
-  top: 0;
+  top: -4vw;
   left: 0;
-  right: 0;
+  padding: 0.75vw;
+  width: 98.45%; /* super specific to properly center */
+  transition: top 0.3s;
+  background-color: #111111;
+  border-radius: 0 0 1vw 1vw;
   z-index: 1000;
-  padding: 1vw;
 }
 
 model-viewer {
@@ -62,7 +59,7 @@ model-viewer:hover {
   color: black;
 }
 
-.repo {
+.repo { 
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -77,6 +74,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 #repos {
   display: flex;
   flex-wrap: wrap;
