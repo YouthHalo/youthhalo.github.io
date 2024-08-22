@@ -16,7 +16,7 @@ document.querySelector("h1").innerHTML = greeting + " Im YouthHalo";
 window.onscroll = function() {scrollFunction()};
 var topnav = document.getElementById("topnav");
 function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
     topnav.style.top = "0";
   } else {
     topnav.style.top = "-4vw";
