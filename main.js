@@ -23,5 +23,3 @@ function scrollFunction() {
   }
 }
 
-// realised that a loading screen is a bad practice
-

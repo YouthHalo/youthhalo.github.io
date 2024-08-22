@@ -38,6 +38,66 @@ model-viewer:hover {
   height: 20vw;
 }
 
+.title {
+  font-size: 7vw;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.description {
+  font-size: 1.5vw;
+  margin-top: 0;
+  padding-top: 0;
+
+}
+a {
+  list-style-type: none;
+  text-decoration: none;
+  color: lightblue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.project {
+  width: 50%;
+  max-width: 50%;
+  height: auto;
+  padding: 1vw;
+  margin-top: 4vw;
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+.project:hover {
+  opacity: 1;
+  max-width: 75%;
+  width: 75%;
+}
+
+.left.project {
+  background-color: #8e8e93;
+  align-self: flex-start;
+  border-radius: 0 2vw 2vw 2vw;
+  position: relative;
+  text-align: start;
+}
+
+.right.project {
+  background-color: #53d769;
+  align-self: flex-end;
+  border-radius: 2vw 0 2vw 2vw;
+  text-align: end;
+}
+
 .card {
   outline: 0.1vw black solid;
   border-radius: 1vw;
@@ -56,7 +116,6 @@ model-viewer:hover {
   text-align: center;
   align-items: center;
   text-decoration: none;
-  color: black;
 }
 
 .repo {
@@ -70,41 +129,3 @@ model-viewer:hover {
   flex-wrap: wrap;
   justify-content: center;
 }
-
-a {
-  list-style-type: none;
-  text-decoration: none;
-  color: lightblue;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.projects {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  border: 1px solid black;
-}
-
-.project {
-  max-width: 75%;
-  border-radius: 24px;
-}
-
-.project .left {
-  display: flex;
-  background-color: darkorchid;
-  align-self: flex-start;
-}
-
-.project .right {
-  display: flex;
-  background-color: cyan;
-  align-self: flex-end;
-}
-
-
-
