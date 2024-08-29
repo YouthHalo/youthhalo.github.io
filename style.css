@@ -90,7 +90,7 @@ a:hover {
 .left.project {
   background-color: #8e8e93;
   align-self: flex-start;
-  border-radius: 0 2vw 2vw 2vw;
+  border-radius: 2vw 2vw 2vw 0;
   position: relative;
   text-align: start;
 }
@@ -98,7 +98,7 @@ a:hover {
 .right.project {
   background-color: #53d769;
   align-self: flex-end;
-  border-radius: 2vw 0 2vw 2vw;
+  border-radius: 2vw 2vw 0 2vw;
   text-align: end;
 }
 
