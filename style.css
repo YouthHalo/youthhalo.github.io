@@ -23,6 +23,12 @@ body {
   z-index: 1000;
 }
 
+.topbuttons {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+}
+
 model-viewer {
   shape-rendering: optimizeSpeed;
   display: flex;
@@ -42,10 +48,21 @@ model-viewer:hover {
 
 .title {
   font-size: 7vw;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  text-align: center;
+  font-size: 15vw;
+}
+
+.pfp {
+  border-radius: 50%;
+  width: 25vw;
+  height: auto;
 }
 
 .description {
@@ -76,6 +93,7 @@ a:hover {
   max-width: 50%;
   height: auto;
   padding: 1vw;
+  padding-top: 0;
   margin-top: 4vw;
   opacity: 0.8;
   transition: all 0.5s;
@@ -85,6 +103,7 @@ a:hover {
   opacity: 1;
   max-width: 75%;
   width: 75%;
+  font-size: large;
 }
 
 .left.project {
