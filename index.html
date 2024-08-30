@@ -106,6 +106,16 @@
       <h3>All Repositories</h3>
       <ul id="repos"></ul>
     </div>
+    
+    <div class="get-in-touch">
+      <h3>Get in touch</h3>
+      <form onsubmit="event.preventDefault();localStorage.setItem('email', document.getElementById('email').value);localStorage.setItem('message', document.getElementById('message').value);">
+        <input type="email" id="email" name="email" placeholder="Your Email">
+        <textarea id="message" name="message" placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    
     <script src="main.js"></script>
 
   </body>
