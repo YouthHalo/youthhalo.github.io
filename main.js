@@ -16,10 +16,19 @@ document.querySelector("h1").innerHTML = greeting + " Im YouthHalo";
 window.onscroll = function() {scrollFunction()};
 var topnav = document.getElementById("topnav");
 function scrollFunction() {
-  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+  if (document.body.scrollTop > 220 || document.documentElement.scrollTop > 220) {
     topnav.style.top = "0";
   } else {
     topnav.style.top = "-4vw";
   }
 }
 
+document.querySelectorAll('a[href="/"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});

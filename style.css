@@ -23,6 +23,12 @@ body {
   z-index: 1000;
 }
 
+.topbuttons {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+}
+
 model-viewer {
   shape-rendering: optimizeSpeed;
   display: flex;
@@ -76,6 +82,7 @@ a:hover {
   max-width: 50%;
   height: auto;
   padding: 1vw;
+  padding-top: 0;
   margin-top: 4vw;
   opacity: 0.8;
   transition: all 0.5s;
@@ -85,6 +92,8 @@ a:hover {
   opacity: 1;
   max-width: 75%;
   width: 75%;
+  font-size: large;
+
 }
 
 .left.project {
