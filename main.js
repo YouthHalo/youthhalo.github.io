@@ -11,7 +11,7 @@ if (n >= 5 && n < 12) {
   greeting = "Good night!";
 }
 
-document.querySelector("h1").innerHTML = greeting + " Im YouthHalo";
+document.querySelector("h1").innerHTML = greeting + " I'm";
 
 window.onscroll = function() {scrollFunction()};
 var topnav = document.getElementById("topnav");
@@ -28,7 +28,7 @@ document.querySelectorAll('a[href="/"]').forEach(function(a) {
     e.preventDefault();
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth' // or 'auto', which defaults to instant or 'instant'
     });
   });
 });
