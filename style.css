@@ -1,10 +1,20 @@
 body {
+  opacity: 0;
   font-family: "Roboto", monospace;
   cursor: url("assets/cursor.png"), auto;
   background-color: #222222;
   font-size: 1.5vw;
   text-align: center;
   color: whitesmoke;
+  transition: opacity 1s;
+}
+
+.loaded {
+  opacity: 1;
+}
+
+.nojs {
+  opacity: 1;
 }
 
 #topnav {
@@ -24,8 +34,10 @@ body {
 
 .topbuttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   justify-self: center;
+  width: 75vw;
+  margin: 0 auto;
 }
 
 model-viewer {
@@ -120,14 +132,14 @@ a:hover {
   max-width: 55%;
   width: 55%;
   font-size: 1.65vw;
-  margin-left: calc(11vw/15);
-  margin-right: calc(11vw/15);
+  margin-left: calc(11vw / 15);
+  margin-right: calc(11vw / 15);
 }
 
 .project.clicked {
   max-width: 75%;
   width: 75%;
-  font-size: 2vw;
+  font-size: 2.25vw;
   margin-left: 1vw;
   margin-right: 1vw;
 }
@@ -139,7 +151,10 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
+.project:hover img {
+  width: 38.5vw;
+  height: auto;
+}
 .project.clicked img {
   width: 55vw;
   height: auto;

@@ -1,6 +1,11 @@
+document.body.classList.remove("nojs");
+window.scrollTo(0, 0);
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
-}
+};
+window.addEventListener("load", function () {
+  document.body.classList.add("loaded");
+});
 
 var d = new Date();
 var n = d.getHours();
@@ -32,6 +37,7 @@ function scrollFunction() {
     topnav.style.top = "-4vw";
   }
 }
+
 document.querySelectorAll('a[href="/"]').forEach(function (a) {
   a.addEventListener("click", function (e) {
     e.preventDefault();
