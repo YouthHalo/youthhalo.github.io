@@ -7,7 +7,6 @@ body {
   color: whitesmoke;
 }
 
-
 #topnav {
   display: flex;
   justify-content: space-between;
@@ -85,8 +84,8 @@ model-viewer:hover {
 
 .description {
   font-size: 1.5vw;
-
 }
+
 a {
   list-style-type: none;
   text-decoration: none;
@@ -117,11 +116,26 @@ a:hover {
 
 .project:hover {
   opacity: 1;
+  cursor: pointer;
+}
+
+.project.clicked {
   max-width: 75%;
   width: 75%;
   font-size: 2vw;
 }
 
+.project img {
+  transition: width 0.5s;
+  width: 35vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project.clicked img {
+  width: 55vw;
+  height: auto;
+}
 .left.project {
   background-color: #8e8e93;
   align-self: flex-start;
