@@ -70,7 +70,11 @@ model-viewer:hover {
   transition: all 0.5s;
   display: flex;
   justify-content: center;
-  gap: 10vw;
+  gap: 20vw;
+}
+
+.intro:hover {
+  gap: vw;
 }
 
 .pfp {
@@ -115,7 +119,7 @@ a:hover {
   opacity: 1;
   max-width: 75%;
   width: 75%;
-  font-size: large;
+  font-size: 2vw;
 }
 
 .left.project {
@@ -145,12 +149,13 @@ a:hover {
   min-width: 20vw;
   min-height: 18vw;
   margin: 2vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   justify-content: center;
 }
 
 .cards {
   display: inline-flex;
-  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
   align-items: center;
