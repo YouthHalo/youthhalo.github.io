@@ -132,10 +132,12 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
 .project.clicked img {
   width: 55vw;
   height: auto;
 }
+
 .left.project {
   background-color: #8e8e93;
   align-self: flex-start;

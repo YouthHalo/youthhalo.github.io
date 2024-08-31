@@ -38,18 +38,18 @@ document.querySelectorAll('a[href="/"]').forEach(function (a) {
   });
 });
 
-document.querySelectorAll('.project').forEach(function (project) {
-  project.addEventListener('click', function (e) {
-    document.querySelectorAll('.project').forEach(function (p) {
-      p.classList.remove('clicked');
+document.querySelectorAll(".project").forEach(function (project) {
+  project.addEventListener("click", function (e) {
+    document.querySelectorAll(".project").forEach(function (p) {
+      //p.classList.remove('clicked'); removing this helps with the clicking on the same project
     });
-    if (project.classList.contains('clicked')) {
-      project.classList.remove('clicked');
+    if (project.classList.contains("clicked")) {
+      project.classList.remove("clicked");
     } else {
-      project.classList.add('clicked');
+      project.classList.add("clicked");
     }
   });
-  project.addEventListener('mouseleave', function (e) {
-    project.classList.remove('clicked');
+  project.addEventListener("mouseleave", function (e) {
+    project.classList.remove("clicked");
   });
 });
