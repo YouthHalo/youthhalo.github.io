@@ -173,7 +173,18 @@
                     "'>" +
                     value.name +
                     "</a></div>"
-                ); //Removed README, was kinda useless
+                );
+              }
+            });
+            $.each(data, function (index, value) {
+              if (value.archived == false && value.name != "YouthHalo") {
+                $("#repos").append(
+                  "<div class='card'><a class='repo' href='" +
+                    value.html_url +
+                    "'>" +
+                    value.name +
+                    "</a></div>"
+                );
               }
             });
           }
@@ -182,9 +193,7 @@
     </script>
 
     <h3>All Repositories</h3>
-    <div class="cards">
-      <ul id="repos"></ul>
-    </div>
+    <ul id="repos"></ul>
 
     <script src="main.js"></script>
   </body>

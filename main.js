@@ -64,4 +64,39 @@ document.querySelectorAll(".project").forEach(function (project) {
   });
 });
 
+console.log(document.documentElement.clientWidth)
+const repoContainer = document.getElementById('repos');
+const repoScrollWidth = repoContainer.scrollWidth;
+window.addEventListener('load', () => {
+  self.setInterval(() => {
+    if (repoContainer.scrollLeft > repoScrollWidth * (2.213)) { //2.213 only really works for 1366x768 with real width of 1349px
+      repoContainer.scrollTo(0, 0);
+    } else {
+      repoContainer.scrollTo(repoContainer.scrollLeft + 1, 0);
+    }
+  }, 15);
+});
 
+
+/* //a much better implementation but i wasn't able to get it to work
+const repoContainer = document.getElementById("repos");
+const repoScrollWidth = repoContainer.scrollWidth;
+
+window.addEventListener("load", () => {
+  self.setInterval(() => {
+    const first = document.querySelector("#repos .card");
+
+    if (!isElementInViewport(first)) {
+      repoContainer.appendChild(first);
+      repoContainer.scrollTo(repoContainer.scrollLeft - first.offsetWidth, 0);
+    }
+    if (repoContainer.scrollLeft !== repoScrollWidth) {
+      repoContainer.scrollTo(repoContainer.scrollLeft + 1, 0);
+    }
+  }, 15);
+});
+
+function isElementInViewport(el) {
+  var rect = el.getBoundingClientRect();
+  return rect.right > 0;
+} */
