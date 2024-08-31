@@ -92,9 +92,19 @@ window.addEventListener("load", () => {
 });
 
 repoContainer.addEventListener("mouseenter", () => {
-  scrollSpeed = 1;
+  scrollSpeed = 0.75;
 });
 
 repoContainer.addEventListener("mouseleave", () => {
   scrollSpeed = 1.5;
+});
+
+document.querySelectorAll('a[href="#about"]').forEach(function (a) {
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or 'auto', which defaults to instant or 'instant'
+    });
+  });
 });
