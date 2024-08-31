@@ -1,3 +1,7 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 var d = new Date();
 var n = d.getHours();
 var greeting;

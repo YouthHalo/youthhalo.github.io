@@ -117,12 +117,19 @@ a:hover {
 .project:hover {
   opacity: 1;
   cursor: pointer;
+  max-width: 55%;
+  width: 55%;
+  font-size: 1.65vw;
+  margin-left: calc(11vw/15);
+  margin-right: calc(11vw/15);
 }
 
 .project.clicked {
   max-width: 75%;
   width: 75%;
   font-size: 2vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .project img {
