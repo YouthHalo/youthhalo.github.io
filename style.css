@@ -1,5 +1,4 @@
 body {
-  opacity: 0;
   font-family: "Roboto", monospace;
   cursor: url("assets/cursor.png"), auto;
   background-color: #222222;
@@ -7,14 +6,6 @@ body {
   text-align: center;
   color: whitesmoke;
   transition: opacity 1s;
-}
-
-.loaded {
-  opacity: 1;
-}
-
-.nojs {
-  opacity: 1;
 }
 
 #topnav {

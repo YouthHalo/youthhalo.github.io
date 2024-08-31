@@ -1,11 +1,7 @@
-document.body.classList.remove("nojs");
 window.scrollTo(0, 0);
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
-window.addEventListener("load", function () {
-  document.body.classList.add("loaded");
-});
 
 var d = new Date();
 var n = d.getHours();
@@ -104,6 +100,28 @@ document.querySelectorAll('a[href="#about"]').forEach(function (a) {
     e.preventDefault();
     window.scrollTo({
       top: 0,
+      behavior: "smooth", // or 'auto', which defaults to instant or 'instant'
+    });
+  });
+});
+
+document.querySelectorAll('a[href="#projects"]').forEach(function (a) {
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+    const h2 = document.querySelector('h2:has-text("Projects")');
+    window.scrollTo({
+      top: h2.offsetTop,
+      behavior: "smooth", // or 'auto', which defaults to instant or 'instant'
+    });
+  });
+});
+
+document.querySelectorAll('a[href="#repos"]').forEach(function (a) {
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+    const contactSection = document.querySelector(".repos");
+    window.scrollTo({
+      top: h2.offsetTop,
       behavior: "smooth", // or 'auto', which defaults to instant or 'instant'
     });
   });
