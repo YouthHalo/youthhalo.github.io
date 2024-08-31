@@ -180,25 +180,38 @@ a:hover {
 }
 
 .card {
+  transition: all 0.5s;
   outline: 0.1vw black solid;
   border-radius: 1vw;
   display: flex;
   flex-direction: column;
   min-width: 20vw;
+  max-width: 20vw;
   min-height: 18vw;
+  max-height: 18vw;
   margin: 2vw;
   padding-top: 1vw;
   padding-bottom: 1vw;
   justify-content: center;
 }
 
+.card:hover {
+  min-width: 22vw;
+  max-width: 22vw;
+  min-height: 20vw;
+  max-height: 20vw;
+  font-size: 1.65vw;
+}
+
 .cards {
-  display: inline-flex;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   text-decoration: none;
+  width: 100%;
 }
+/*this cards thing could lowkey be doing nothing*/
+
 
 .repo {
   list-style-type: none;
@@ -208,6 +221,6 @@ a:hover {
 
 #repos {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: auto;
+  width: 100%;
 }

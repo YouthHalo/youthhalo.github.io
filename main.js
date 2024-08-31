@@ -63,3 +63,5 @@ document.querySelectorAll(".project").forEach(function (project) {
     project.classList.remove("clicked");
   });
 });
+
+
