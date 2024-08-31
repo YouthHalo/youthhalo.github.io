@@ -70,11 +70,11 @@ model-viewer:hover {
   transition: all 0.5s;
   display: flex;
   justify-content: center;
-  gap: 20vw;  
+  gap: 3vw;
 }
 
 .intro:hover {
-  gap: 3vw;
+  gap: 20vw;
 }
 
 .pfp {

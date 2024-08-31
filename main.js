@@ -31,34 +31,3 @@ document.querySelectorAll('a[href="/"]').forEach(function(a) {
     });
   });
 });
-
-/*document.querySelector("form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  var email = document.getElementById("email").value;
-  var message = document.getElementById("message").value;
-  var data = "Email: " + email + "\nMessage: " + message;
-
-  var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement("a");
-  a.href = url;
-  a.download = "message.txt";
-  a.click();
-  URL.revokeObjectURL(url);
-
-  var formData = new FormData();
-  formData.append("file", blob);
-
-  fetch("/upload", {
-    method: "POST",
-    body: formData
-  }).then(function() {
-    alert("Message sent!");
-  }).catch(function(error) {
-    alert("Error sending message: " + error);
-  });
-
-  document.getElementById("email").value = "";
-  document.getElementById("message").value = "";
-});
-*/ //no way of sending it to a github pages server
