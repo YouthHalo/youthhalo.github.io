@@ -95,6 +95,7 @@ repoContainer.addEventListener("mouseleave", () => {
   scrollSpeed = 1.5;
 });
 
+/*
 document.querySelectorAll('a[href="#about"]').forEach(function (a) {
   a.addEventListener("click", function (e) {
     e.preventDefault();
@@ -125,4 +126,18 @@ document.querySelectorAll('a[href="#repos"]').forEach(function (a) {
       behavior: "smooth", // or 'auto', which defaults to instant or 'instant'
     });
   });
+}); */ //these dont do anything yet
+
+
+document.addEventListener("mousedown", (e) => {
+  const circle = document.createElement("div");
+  circle.className = "cursor-circle";
+  circle.style.position = "absolute";
+  circle.style.left = e.clientX + "px";
+  circle.style.top = e.clientY + "px";
+  document.body.appendChild(circle);
+  setTimeout(() => {
+    circle.remove();
+  }, 250);
 });
+//doesnt do what i want it to dooo
