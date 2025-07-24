@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nabeel's Portfolio</title>
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+<body>
+	<!-- Terminal-style navigation -->
+	<nav class="terminal-nav">
+		<div class="path">youthhalo@nabeelahmad:<span id="current-path" >~</span>$</div>
+		<div class="nav-tabs">
+			<button class="nav-tab active" data-section="home">~</button>
+			<button class="nav-tab" data-section="about">about/</button>
+			<button class="nav-tab" data-section="projects">projects/</button>
+			<button class="nav-tab" data-section="contact">contact/</button>
+		</div>
+	</nav>
+
+	<header>
+		<nav>
+			<div class="nav-container">
+				<h1 class="logo">Nabeel</h1>
+				<ul class="nav-menu">
+					<li><a href="#about">About</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Home Section (Hero) -->
+		<section id="home" class="section-slice active">
+			<div id="hero">
+				<div class="hero-content">
+					<img id="profile-avatar" src="" alt="Profile Picture" class="profile-img">
+					<h2>Hi, I'm <span id="github-name">Nabeel</span></h2>
+					<p id="github-bio">Developer & Creator</p>
+					<div class="hero-stats">
+						<span>📍 <span id="github-location">Location</span></span>
+						<span>👥 <span id="github-followers">0</span> followers</span>
+						<span>📚 <span id="github-repos">0</span> repositories</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section id="about" class="section-slice">
+			<div class="container">
+				<h2>About Me</h2>
+				<p>I'm an incoming Computer Science student at the University of Toronto Mississauga with a passion for creating small videogames.</p>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section id="projects" class="section-slice">
+			<div class="container">
+				<h2>My Projects</h2>
+				<div id="repositories" class="projects-grid">
+					<!-- GitHub repos HERE -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section id="contact" class="section-slice">
+			<div class="container">
+				<h2>Get In Touch</h2>
+				<div class="contact-links">
+					<a id="github-link" href="#" target="_blank">GitHub</a>
+					<a id="email-link" href="#">Email</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2007-Today Nabeel Ahmad. Do I actually have rights to my own name?</p>
+	</footer>
+
+	<script>
+		const USERNAME = 'youthhalo';
+		
+		// Section navigation
+		function showSection(sectionId) {
+			// Hide all sections
+			document.querySelectorAll('.section-slice').forEach(section => {
+				section.classList.remove('active');
+			});
+			
+			// Show selected section
+			document.getElementById(sectionId).classList.add('active');
+			
+			// Update nav tabs
+			document.querySelectorAll('.nav-tab').forEach(tab => {
+				tab.classList.remove('active');
+			});
+			document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+			
+			// Update path
+			const pathMap = {
+				'home': '~',
+				'about': '~/about',
+				'projects': '~/projects',
+				'contact': '~/contact'
+			};
+			document.getElementById('current-path').textContent = pathMap[sectionId];
+		}
+		
+		// Add event listeners to navigation
+		document.querySelectorAll('.nav-tab').forEach(tab => {
+			tab.addEventListener('click', () => {
+				const section = tab.getAttribute('data-section');
+				showSection(section);
+			});
+		});
+		
+		async function fetchGitHubData() {
+			try {
+				// Fetch user profile
+				const userResponse = await fetch(`https://api.github.com/users/${USERNAME}`);
+				const userData = await userResponse.json();
+				
+				// Fetch repositories
+				const reposResponse = await fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=6`);
+				const reposData = await reposResponse.json();
+				
+				updateProfile(userData);
+				updateRepositories(reposData);
+			} catch (error) {
+				console.error('Error fetching GitHub data:', error);
+			}
+		}
+		
+		function updateProfile(user) {
+			document.getElementById('profile-avatar').src = user.avatar_url;
+			document.getElementById('github-name').textContent = user.name || user.login;
+			document.getElementById('github-bio').textContent = user.bio || 'Developer & Creator';
+			document.getElementById('github-location').textContent = user.location || 'Unknown';
+			document.getElementById('github-followers').textContent = user.followers;
+			document.getElementById('github-repos').textContent = user.public_repos;
+			document.getElementById('github-link').href = user.html_url;
+			document.getElementById('email-link').href = `mailto:${user.email || 'contact@example.com'}`;
+		}
+		
+		function updateRepositories(repos) {
+			const container = document.getElementById('repositories');
+			container.innerHTML = '';
+			
+			repos.forEach(repo => {
+				const repoCard = document.createElement('div');
+				repoCard.className = 'repo-card';
+				repoCard.innerHTML = `
+					<h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+					<p>${repo.description || 'No description available'}</p>
+					<div class="repo-stats">
+						<span>⭐ ${repo.stargazers_count}</span>
+						<span>🍴 ${repo.forks_count}</span>
+						<span class="language">${repo.language || 'Unknown'}</span>
+					</div>
+				`;
+				container.appendChild(repoCard);
+			});
+		}
+		
+		// Load GitHub data when page loads
+		document.addEventListener('DOMContentLoaded', fetchGitHubData);
+	</script>
+</body>
+</html>
