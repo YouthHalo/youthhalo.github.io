@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - PNF | Nabeel's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Terminal-style navigation -->
+    <nav class="terminal-nav">
+        <div class="path">
+            youthhalo@nabeel-ahmad:<span id="current-path">~</span>$ 404 - Page Not Found<span class="terminal-cursor"> |</span>
+        </div>
+        <div class="nav-tabs">
+            <button class="nav-tab" onclick="goHome()">Home</button>
+            <button class="nav-tab" onclick="goToProjects()">Projects</button>
+            <button class="nav-tab" onclick="goToContact()">Contact</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-slice active">
+            <div class="container">
+                <div id="404-content" style="text-align: center; padding: 4rem 0;">
+                    <h1 style="font-size: 4rem; color: #ff4444; margin-bottom: 2rem;">404</h1>
+                    <h2 style="color: #e0e0e0; margin-bottom: 2rem;">Page Not Found</h2>
+                    <p style="color: #b0b0b0; font-size: 1.2rem; margin-bottom: 3rem;">
+                        The page you're looking for doesn't exist or has been moved.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn" onclick="goHome()">Go Home</button>
+                        <button class="btn" onclick="goToProjects()">View Projects</button>
+                        <button class="btn" onclick="history.back()">Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2007-2025 Nabeel Ahmad</p>
+    </footer>
+
+    <script>
+        (function() {
+            const validRoutes = ['/', '/projects', '/contact'];
+            const currentPath = window.location.pathname;
+            
+            console.log('404 page loaded, checking path:', currentPath);
+            
+            // Check if this is a valid route that should be redirected
+            if (validRoutes.includes(currentPath)) {
+                console.log('Valid route detected, redirecting to SPA...');
+
+								const redirectUrl = '/' + window.location.search + '#redirect=' + encodeURIComponent(currentPath);
+                window.location.replace(redirectUrl);
+            } else {
+                console.log('Invalid route, showing 404 page');
+                // Stay on 404 page for truly invalid routes
+            }
+        })();
+
+        // Navigation functions
+        function goHome() {
+            window.location.href = '/';
+        }
+
+        function goToProjects() {
+            window.location.href = '/projects';
+        }
+
+        function goToContact() {
+            window.location.href = '/contact';
+        }
+    </script>
+</body>
+</html>

@@ -29,7 +29,7 @@ header {
 
 nav {
 	text-align: left;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -37,41 +37,18 @@ nav {
 	padding: 0 2rem;
 }
 
-.logo {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #4a9eff;
-
-}
-
-nav ul {
-	display: flex;
-	list-style: none;
-	gap: 2rem;
-}
-
-nav a {
-	text-decoration: none;
-	color: #e0e0e0;
-	font-weight: 500;
-	transition: color 0.3s ease;
-}
-
-nav a:hover {
-	color: #4a9eff;
-}
 
 /* Main Content */
 main {
 	margin-top: 80px;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 2rem;
 }
 
-/* Hero Section */
-.hero {
+/* Home Section (Combined Profile + About) */
+#home-content {
 	text-align: center;
 	padding: 4rem 0;
 	background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
@@ -81,20 +58,56 @@ main {
 	border: 1px solid #333;
 }
 
-.hero h1 {
+.about-content {
+	margin-top: 3rem;
+	padding-top: 3rem;
+	border-top: 1px solid #404040;
+}
+
+.about-content h3 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	color: #4a9eff;
+}
+
+.about-content p {
+	font-size: 1.1rem;
+	color: #b0b0b0;
+	max-width: 600px;
+	margin: 0 auto;
+	line-height: 1.7;
+}
+
+/* Home Profile Styles */
+.home-profile {
+	margin-bottom: 0;
+}
+
+.home-profile h1,
+.home-profile h2 {
 	font-size: 3rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
 	background: linear-gradient(135deg, #4a9eff, #66b3ff);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
-.hero p {
+.home-profile p {
 	font-size: 1.2rem;
 	color: #b0b0b0;
 	max-width: 600px;
 	margin: 0 auto 2rem;
+}
+
+#profile-avatar {
+	border-radius: 50%;
+	width: 400px;
+	height: 400px;
+	object-fit: cover;
+	margin-bottom: 1rem;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Buttons */
@@ -124,6 +137,7 @@ section {
 	border: 1px solid #333;
 }
 
+/* Section Headings for each page */
 section h2 {
 	font-size: 2.5rem;
 	margin-bottom: 2rem;
@@ -152,10 +166,164 @@ section h2 {
 	border-color: #4a9eff;
 }
 
-.project-card h3 {
-	color: #4a9eff;
-	margin-bottom: 1rem;
+/* Custom Projects Layout */
+.projects-intro {
+	text-align: center;
+	color: #b0b0b0;
+	margin-bottom: 2rem;
+	font-size: 1.1rem;
 }
+
+.tag-filter {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-bottom: 3rem;
+}
+
+.tag-btn {
+	background: rgba(74, 158, 255, 0.1);
+	border: 1px solid #4a9eff;
+	color: #4a9eff;
+	padding: 8px 16px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 0.9rem;
+	font-family: inherit;
+}
+
+.tag-btn:hover {
+	background: rgba(74, 158, 255, 0.2);
+	transform: translateY(-2px);
+}
+
+.tag-btn.active {
+	background: #4a9eff;
+	color: #1a1a1a;
+	box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+}
+
+.custom-projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.custom-project-card {
+	background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+	border-radius: 15px;
+	overflow: hidden;
+	border: 1px solid #404040;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+.custom-project-card:hover {
+	transform: translateY(-8px);
+	border-color: #4a9eff;
+	box-shadow: 0 15px 35px rgba(74, 158, 255, 0.2);
+}
+
+.project-topbar {
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(10px);
+	padding: 12px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #404040;
+}
+
+.project-dates {
+	color: #b0b0b0;
+	font-size: 0.85rem;
+	font-family: 'Courier New', monospace;
+}
+
+.project-name {
+	color: #4a9eff;
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.project-image-container {
+	position: relative;
+	height: 200px;
+	background: linear-gradient(135deg, #2a2a2a 0%, #353535 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.project-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.custom-project-card:hover .project-image {
+	transform: scale(1.05);
+}
+
+.project-placeholder {
+	color: #666;
+	font-size: 3rem;
+	opacity: 0.3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.project-description {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.9);
+	color: #e0e0e0;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	line-height: 1.6;
+}
+
+.custom-project-card:hover .project-description {
+	opacity: 1;
+}
+
+.project-tags {
+	padding: 15px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.project-tag {
+	background: rgba(74, 158, 255, 0.15);
+	color: #4a9eff;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	border: 1px solid rgba(74, 158, 255, 0.3);
+}
+
+.project-hidden {
+	display: none;
+}
+
 
 /* Footer */
 footer {
@@ -176,6 +344,37 @@ footer {
 	padding: 10px 20px;
 	font-family: 'Courier New', monospace;
 	border-bottom: 2px solid #333;
+}
+
+.terminal-nav .path {
+	margin-bottom: 10px;
+	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+#terminal-text {
+	max-width: 100vw;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+}
+
+.terminal-cursor {
+	color: #00ff00;
+	animation: blink 1s infinite;
+}
+
+@keyframes blink {
+	0%, 50% {
+		opacity: 1;
+	}
+	51%, 100% {
+		opacity: 0;
+	}
 }
 
 .terminal-nav .path {
@@ -232,7 +431,8 @@ header {
 		gap: 1rem;
 	}
 	
-	.hero h1 {
+	.home-profile h1,
+	.home-profile h2 {
 		font-size: 2rem;
 	}
 	
@@ -244,3 +444,10 @@ header {
 		padding: 2rem 1rem;
 	}
 }
+
+footer {
+	text-align: left;
+	padding: 0rem 0rem;
+	
+}
+
