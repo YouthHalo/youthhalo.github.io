@@ -252,6 +252,7 @@ function updateProfile(user) {
 
 // Terminal Text Input System - Capture keyboard input and display in terminal
 let terminalText = "";
+let isShowingTempMessage = false; // Flag to track if showing temporary message
 const terminalTextElement = document.getElementById("terminal-text");
 
 // Keyboard Input Handler - Capture all keyboard input on the page
@@ -268,19 +269,17 @@ document.addEventListener("keydown", (event) => {
 	// Handle different key types
 	switch (event.key) {
 		case "Backspace":
-			// Remove last character from terminal text
 			terminalText = terminalText.slice(0, -1);
 			updateTerminalDisplay();
 			break;
 
 		case "Enter":
-			// Clear terminal text on Enter
+			processTerminalCommand(terminalText.trim());
 			terminalText = "";
 			updateTerminalDisplay();
 			break;
 
 		case "Escape":
-			// Clear all terminal text on Escape
 			terminalText = "";
 			updateTerminalDisplay();
 			break;
@@ -300,11 +299,113 @@ document.addEventListener("keydown", (event) => {
 	}
 });
 
-// Update Terminal Display - Refresh the terminal text display
 function updateTerminalDisplay() {
-	if (terminalTextElement) {
+	if (terminalTextElement && !isShowingTempMessage) {
 		terminalTextElement.textContent = terminalText;
 	}
+}
+
+// Show Temporary Message - Display message for 2 seconds then return to normal
+function showTempMessage(message, color = '#ff6b6b') {
+	if (!terminalTextElement) return;
+	
+	isShowingTempMessage = true;
+	const originalColor = terminalTextElement.style.color;
+	
+	// Show the temporary message with specified color
+	terminalTextElement.textContent = message;
+	terminalTextElement.style.color = color;
+	
+	// After 2 seconds, restore normal terminal display
+	setTimeout(() => {
+		isShowingTempMessage = false;
+		terminalTextElement.style.color = originalColor;
+		updateTerminalDisplay();
+	}, 2000);
+}
+
+// Process Terminal Commands - Handle terminal command execution
+function processTerminalCommand(command) {
+	if (!command) return;
+	
+	console.log('Processing terminal command:', command);
+	
+	// Split command into parts (command and arguments)
+	const parts = command.toLowerCase().split(' ');
+	const cmd = parts[0];
+	const args = parts.slice(1);
+	
+	switch (cmd) {
+		case 'cd':
+			handleCdCommand(args);
+			break;
+			
+		case 'neofetch':
+			handleNeofetchCommand();
+			break;
+			
+		case 'ls':
+		case 'dir':
+			handleLsCommand();
+			break;
+			
+		case 'help':
+			handleHelpCommand();
+			break;
+			
+		case 'clear':
+			// Clear command handled by existing logic
+			break;
+			
+		default:
+			// Unknown command - show error message in terminal
+			showTempMessage(`command not found: ${cmd}`);
+			break;
+	}
+}
+
+// Handle CD Command - Navigate to different sections
+function handleCdCommand(args) {
+	if (args.length === 0) {
+		// cd with no arguments goes to home
+		showSection('home');
+		return;
+	}
+	
+	const target = args[0].toLowerCase();
+	
+	// Map of valid cd targets to sections
+	const sectionMap = {
+		'~': 'home',
+		'home': 'home',
+		'projects': 'projects',
+		'contact': 'contact',
+		'..': 'home', // Go back to home
+		'/': 'home'
+	};
+	
+	if (sectionMap[target]) {
+		showSection(sectionMap[target]);
+	} else {
+		// Show error message in terminal for invalid cd targets
+		showTempMessage(`cd: ${target}: No such file or directory`);
+	}
+}
+
+// Handle Neofetch Command - Open GitHub profile
+function handleNeofetchCommand() {
+	showTempMessage('Opening GitHub profile...', '#4a9eff');
+	window.open(`https://github.com/${USERNAME}`, '_blank');
+}
+
+// Handle LS Command - Show available sections
+function handleLsCommand() {
+	showTempMessage('home  projects  contact', '#00ff00');
+}
+
+// Handle Help Command - Show available commands
+function handleHelpCommand() {
+	showTempMessage('cd [dir] | neofetch | ls | clear | help', '#ffeb3b');
 }
 
 // Handle 404 Redirects - Check if we're being redirected from 404 page
