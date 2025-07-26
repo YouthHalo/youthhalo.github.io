@@ -23,7 +23,8 @@ function showSection(sectionId, updateHistory = true) {
 	const pathMap = {
 		home: "~",
 		projects: "/projects",
-		contact: "/contact",
+		contact: "/contact"
+		
 	};
 	document.getElementById("current-path").textContent = pathMap[sectionId];
 
@@ -228,8 +229,6 @@ async function fetchGitHubData() {
 
 // Profile Data Display - Update home section with GitHub profile information
 function updateProfile(user) {
-	// Update profile avatar image
-	//document.getElementById("profile-avatar").src = user.avatar_url;
 	// Update display name (use real name if available, otherwise username)
 	document.getElementById("github-name").textContent = user.name || user.login;
 	// Update bio text
@@ -237,7 +236,7 @@ function updateProfile(user) {
 		user.bio || "Developer & Creator";
 	// Update location information
 	document.getElementById("github-location").textContent =
-		user.location || "Unknown";
+		user.location || "Ontario, Canada";
 	// Update follower count
 	document.getElementById("github-followers").textContent = user.followers;
 	// Update repository count
@@ -250,24 +249,58 @@ function updateProfile(user) {
 	}`;
 }
 
-// Terminal Text Input System - Capture keyboard input and display in terminal
+// Terminal Text Input System - Click-to-focus terminal input
 let terminalText = "";
 let isShowingTempMessage = false; // Flag to track if showing temporary message
+let isTerminalFocused = false; // Track if terminal is focused for input
 const terminalTextElement = document.getElementById("terminal-text");
+const terminalCursorElement = document.querySelector(".terminal-cursor");
+const terminalInputArea = document.getElementById("terminal-input-area");
 
-// Keyboard Input Handler - Capture all keyboard input on the page
+//Focus terminal for input
+terminalInputArea.addEventListener("click", () => {
+	focusTerminal();
+});
+
+//Unfocus terminal when clicking elsewhere
+document.addEventListener("click", (event) => {
+	if (!terminalInputArea.contains(event.target)) {
+		unfocusTerminal();
+	}
+});
+
+//Enable input and show cursor
+function focusTerminal() {
+	isTerminalFocused = true;
+	terminalCursorElement.classList.remove("hidden");
+	terminalInputArea.classList.add("terminal-focused");
+}
+
+//Disable input and hide cursor
+function unfocusTerminal() {
+	isTerminalFocused = false;
+	terminalCursorElement.classList.add("hidden");
+	terminalInputArea.classList.remove("terminal-focused");
+}
+
+// Only capture input when terminal is focused
 document.addEventListener("keydown", (event) => {
-	// Prevent default behavior for special keys that we want to handle
+	// Only handle input if terminal is focused
+	if (!isTerminalFocused) return;
+	
+	// Prevent default behavior for special keys when terminal is focused
 	if (
 		event.key === "Backspace" ||
 		event.key === "Enter" ||
-		event.key === "Escape"
+		event.key === "Escape" ||
+		event.key === " " // Prevent spacebar from scrolling page
 	) {
 		event.preventDefault();
 	}
 
 	// Handle different key types
 	switch (event.key) {
+		
 		case "Backspace":
 			terminalText = terminalText.slice(0, -1);
 			updateTerminalDisplay();
@@ -282,10 +315,11 @@ document.addEventListener("keydown", (event) => {
 		case "Escape":
 			terminalText = "";
 			updateTerminalDisplay();
+			unfocusTerminal(); // Unfocus on escape
 			break;
 
 		default:
-			// Add printable characters to terminal text
+			// Add characters to terminal text
 			if (
 				event.key.length === 1 &&
 				!event.ctrlKey &&
@@ -373,23 +407,36 @@ function handleCdCommand(args) {
 	}
 	
 	const target = args[0].toLowerCase();
+	const currentPath = window.location.pathname;
 	
 	// Map of valid cd targets to sections
 	const sectionMap = {
 		'~': 'home',
-		'home': 'home',
 		'projects': 'projects',
 		'contact': 'contact',
 		'..': 'home', // Go back to home
 		'/': 'home'
 	};
 	
-	if (sectionMap[target]) {
-		showSection(sectionMap[target]);
-	} else {
-		// Show error message in terminal for invalid cd targets
+	// check if target valid
+	if (!sectionMap[target]) {
 		showTempMessage(`cd: ${target}: No such file or directory`);
+		return;
 	}
+	
+	// Prevent direct navigation between projects and contact
+	if (currentPath === '/projects' && target === 'contact') {
+		showTempMessage(`cd: ${target}: No such file or directory`);
+		return;
+	}
+	
+	if (currentPath === '/contact' && target === 'projects') {
+		showTempMessage(`cd: ${target}: No such file or directory`);
+		return;
+	}
+	
+	// Navigate to the target section
+	showSection(sectionMap[target]);
 }
 
 // Handle Neofetch Command - Open GitHub profile
@@ -400,7 +447,11 @@ function handleNeofetchCommand() {
 
 // Handle LS Command - Show available sections
 function handleLsCommand() {
-	showTempMessage('home  projects  contact', '#00ff00');
+	if (window.location.pathname === '/') {
+		showTempMessage('home  projects  contact', '#4a9eff');
+	} else {
+		return; 
+	}
 }
 
 // Handle Help Command - Show available commands
@@ -408,7 +459,6 @@ function handleHelpCommand() {
 	showTempMessage('cd [dir] | neofetch | ls | clear | help', '#ffeb3b');
 }
 
-// Handle 404 Redirects - Check if we're being redirected from 404 page
 function handle404Redirect() {
 	const hash = window.location.hash;
 	if (hash.startsWith('#redirect=')) {
@@ -432,7 +482,6 @@ function handle404Redirect() {
 	return false; // No redirect to handle
 }
 
-// Application Initialization - Set up page when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
 	// First check if we're handling a 404 redirect
 	if (!handle404Redirect()) {
