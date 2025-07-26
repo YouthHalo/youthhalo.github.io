@@ -7,18 +7,46 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<div id="mobile-warning" class="mobile-warning-overlay">
+			<div class="mobile-warning-content">
+				<h3>Mobile Notice</h3>
+				<p>
+					Some visual features do not work on Mobile. For the full experience,
+					please visit this website on a desktop.
+				</p>
+				<button id="dismiss-mobile-warning" class="mobile-warning-btn">
+					Got it, continue anyways.
+				</button>
+			</div>
+		</div>
+
 		<!-- Terminal-style navigation -->
 		<nav class="terminal-nav">
 			<div class="path" id="terminal-input-area">
-				youthhalo@nabeel-ahmad<span class="terminal-punctuation">:</span><span id="current-path" class="terminal-directory">~</span><span class="terminal-punctuation">$</span>&nbsp;<span id="terminal-text"></span><span class="terminal-cursor hidden"> |</span>
+				youthhalo@nabeel-ahmad<span class="terminal-punctuation">:</span
+				><span id="current-path" class="terminal-directory">~</span
+				><span class="terminal-punctuation">$</span>&nbsp;<span
+					id="terminal-text"
+				></span
+				><span class="terminal-cursor hidden"> |</span>
+				<!-- Hidden input for mobile keyboard -->
+				<input
+					type="text"
+					id="terminal-hidden-input"
+					style="position: absolute; left: -9999px; opacity: 0"
+					autocomplete="off"
+					autocorrect="off"
+					autocapitalize="off"
+					spellcheck="false"
+				/>
 			</div>
 			<div class="nav-tabs">
-
 				<button class="nav-tab active" data-section="home">Home</button>
 				<button class="nav-tab" data-section="projects">Projects</button>
 				<button class="nav-tab" data-section="contact">Contact</button>
-				<a href="https://github.com/youthhalo" target="_blank" title="GitHub">Github
-					<img src="assets/github-mark.svg" alt="GitHub" style="height: 2em; vertical-align: middle; filter: invert(57%) sepia(52%) saturate(4680%) hue-rotate(85deg) brightness(126%) contrast(116%);" />
+				<a href="https://github.com/youthhalo" target="_blank" title="GitHub"
+					>Github
+					<img src="assets/github-mark.svg" alt="GitHub" />
 				</a>
 			</div>
 		</nav>
@@ -57,8 +85,10 @@
 			<section id="projects" class="section-slice">
 				<div class="container">
 					<h2>My Projects</h2>
-					<p class="projects-intro">Click on a project to learn more or select a tag to filter.</p>
-					
+					<p class="projects-intro">
+						Click on a project to learn more or select a tag to filter.
+					</p>
+
 					<!-- Tag Filter -->
 					<div class="tag-filter">
 						<button class="tag-btn active" data-tag="all">All</button>
@@ -70,108 +100,193 @@
 						<button class="tag-btn" data-tag="Game">Game</button>
 						<button class="tag-btn" data-tag="Web">Web</button>
 					</div>
-					
+
 					<!-- Projects Grid -->
 					<!-- Will be sorted by date automatically, Just fill this up :) -->
 					<div id="projects-grid" class="custom-projects-grid">
 						<!-- Project 1 -->
-						<div class="custom-project-card" data-tags="HTML,CSS,JavaScript,Web">
+						<div
+							class="custom-project-card"
+							data-tags="HTML,CSS,JavaScript,Web"
+						>
 							<div class="project-topbar">
-								<span class="project-dates">Aug 2024 -<br>Jan 2025</span>
+								<span class="project-dates">Aug 2024 -<br />Jan 2025</span>
 								<span class="project-name">Portfolio Website</span>
 							</div>
 							<div class="project-image-container">
-								<img src="" alt="Portfolio Website" class="project-image" style="display: none;">
+								<img
+									src=""
+									alt="Portfolio Website"
+									class="project-image"
+									style="display: none"
+								/>
 								<div class="project-placeholder">📁</div>
-								<div class="project-description">
-									This website here!
-								</div>
+								<div class="project-description">This website here!</div>
 							</div>
 							<div class="project-tags">
-								<span class="project-tag">HTML</span>
-								<span class="project-tag">CSS</span>
-								<span class="project-tag">JavaScript</span>
-								<span class="project-tag">Web</span>
+								<div class="project-tags-left">
+									<span class="project-tag">HTML</span>
+									<span class="project-tag">CSS</span>
+									<span class="project-tag">JavaScript</span>
+									<span class="project-tag">Web</span>
+								</div>
+								<div class="project-icons">
+									<a
+										href="https://github.com/youthhalo/youthhalo.github.io"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="https://youthhalo.github.io"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										🔗
+									</a>
+								</div>
 							</div>
 						</div>
 
 						<!-- Project 2 -->
 						<div class="custom-project-card" data-tags="GDScript,Game,Godot">
 							<div class="project-topbar">
-								<span class="project-dates">Dec 2024 -<br>Jan 2025</span>
+								<span class="project-dates">Dec 2024 -<br />Jan 2025</span>
 								<span class="project-name">Fast Paced Boomer Shooter</span>
 							</div>
 							<div class="project-image-container">
-								<img src="" alt="Game Project" class="project-image" style="display: none;">
+								<img
+									src=""
+									alt="Game Project"
+									class="project-image"
+									style="display: none"
+								/>
 								<div class="project-placeholder">🎮</div>
 								<div class="project-description">
-									A 3D FPS Boomer Shooter game with an emphasis on fast-paced airborne combat, built using Godot Engine and GDScript.
+									A 3D FPS Boomer Shooter game with an emphasis on fast-paced
+									airborne combat, built using Godot Engine and GDScript.
 								</div>
 							</div>
 							<div class="project-tags">
-								<span class="project-tag">GDScript</span>
-								<span class="project-tag">Game</span>
-								<span class="project-tag">Godot</span>
+								<div class="project-tags-left">
+									<span class="project-tag">GDScript</span>
+									<span class="project-tag">Game</span>
+									<span class="project-tag">Godot</span>
+								</div>
+								<div class="project-icons">
+									<a
+										href="https://github.com/youthhalo/Fast-Boomer-Shooter"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="#"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										🔗
+									</a>
+								</div>
 							</div>
 						</div>
 
 						<!-- Project 3 -->
 						<div class="custom-project-card" data-tags="hello">
 							<div class="project-topbar">
-								<span class="project-dates">Jan 1987 -<br>Oct 3000</span>
-								<span class="project-name">This is where I'd put my cool projects</span>
+								<span class="project-dates">Jan 1987 -<br />Oct 3000</span>
+								<span class="project-name"
+									>This is where I'd put my cool projects</span
+								>
 							</div>
 							<div class="project-image-container">
-								<img src="assets/thisiswhere.png" alt="template meme" class="project-image" style="display: none;">
+								<img
+									src="assets/thisiswhere.png"
+									alt="template meme"
+									class="project-image"
+									style="display: none"
+								/>
 								<div class="project-placeholder"></div>
 								<div class="project-description">
-									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio magni voluptatum minus ipsam excepturi neque iste adipisci voluptate, quisquam libero laboriosam commodi nisi itaque corrupti laudantium aperiam ex, unde provident!
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+									Optio magni voluptatum minus ipsam excepturi neque iste
+									adipisci voluptate, quisquam libero laboriosam commodi nisi
+									itaque corrupti laudantium aperiam ex, unde provident!
 								</div>
 							</div>
 							<div class="project-tags">
-								<span class="project-tag">Meme</span>
-								<span class="project-tag">Template</span>
+								<div class="project-tags-left">
+									<span class="project-tag">Meme</span>
+									<span class="project-tag">Template</span>
+								</div>
+								<div class="project-icons">
+									<a
+										href="#"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="#"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										🔗
+									</a>
+								</div>
 							</div>
 						</div>
 
 						<!-- Project 4 -->
 						<div class="custom-project-card" data-tags="hello">
 							<div class="project-topbar">
-								<span class="project-dates">Jan 1986 -<br>Oct 1987</span>
+								<span class="project-dates">Jan 1986 -<br />Oct 1987</span>
 								<span class="project-name">IF I HAD ANY</span>
 							</div>
 							<div class="project-image-container">
-								<img src="assets/ifihadany.png" alt="template meme" class="project-image" style="display: none;">
+								<img
+									src="assets/ifihadany.png"
+									alt="template meme"
+									class="project-image"
+									style="display: none"
+								/>
 								<div class="project-placeholder"></div>
-								<div class="project-description">
-									The Cake is a Lie!
-								</div>
+								<div class="project-description">The Cake is a Lie!</div>
 							</div>
 							<div class="project-tags">
-								<span class="project-tag">Meme</span>
-								<span class="project-tag">Template</span>
-							</div>
-						</div>
-
-						<!-- 
-						<div class="custom-project-card" data-tags="YourTag1,YourTag2">
-							<div class="project-topbar">
-								<span class="project-dates">Start Date -<br>End Date</span>
-								<span class="project-name">Your Project Name</span>
-							</div>
-							<div class="project-image-container">
-								<img src="your-image-url.jpg" alt="Your Project" class="project-image">
-								<div class="project-placeholder">📁</div>
-								<div class="project-description">
-									Your project description here.
+								<div class="project-tags-left">
+									<span class="project-tag">Meme</span>
+									<span class="project-tag">Template</span>
+								</div>
+								<div class="project-icons">
+									<a
+										href="#"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="#"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										🔗
+									</a>
 								</div>
 							</div>
-							<div class="project-tags">
-								<span class="project-tag">YourTag1</span>
-								<span class="project-tag">YourTag2</span>
-							</div>
 						</div>
-						-->
 					</div>
 				</div>
 			</section>
@@ -190,7 +305,8 @@
 		</main>
 
 		<footer>
-			<p>&copy; 2007-2025 Nabeel Ahmad</p>
+			<!-- I dont want the thing to be boring icl-->
+			<p>&copy; 2025 Nabeel Ahmad.</p>
 		</footer>
 
 		<script src="main.js"></script>
