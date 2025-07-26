@@ -25,11 +25,11 @@ nav {
 
 /* Terminal-style navigation */
 .terminal-nav {
-	background: #1a1a1a;
+	background: transparent; /*1a1a1a*/
 	color: #00ff00;
 	padding: 10px 20px;
 	font-family: "Courier New", monospace;
-	border-bottom: 2px solid #333;
+	/*border-bottom: 2px solid #333;*/
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -43,6 +43,7 @@ nav {
 	align-items: center;
 	cursor: text;
 	user-select: none;
+	padding-left: 10px;
 }
 
 .terminal-nav .path:hover {
@@ -215,7 +216,7 @@ section h2 {
 .home-profile p {
 	font-size: 1.2rem;
 	color: #b0b0b0;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto 2rem;
 }
 
@@ -251,7 +252,7 @@ section h2 {
 .about-content p {
 	font-size: 1.1rem;
 	color: #b0b0b0;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	line-height: 1.7;
 }
@@ -601,5 +602,42 @@ footer {
 
 	.contact-links {
 		gap: 1rem;
+	}
+
+	#profile-avatar {
+		width: 300px;
+		height: 300px;
+	}
+
+	.terminal-nav {
+		padding: 8px 15px;
+	}
+
+	.terminal-nav .path {
+		font-size: 16px;
+	}
+
+	.terminal-nav .nav-tabs {
+		gap: 15px;
+	}
+
+	.terminal-nav .nav-tab,
+	.terminal-nav a {
+		font-size: 16px;
+		padding: 4px 8px;
+	}
+
+	.terminal-nav a {
+		gap: 4px;
+	}
+}
+
+/* To make the terminal hidden on a Note 9, unknown if it works on other deviced icl */
+@media (max-width: 480px) {
+
+	.terminal-nav .nav-tab,
+	.terminal-nav a {
+		font-size: 18px;
+		padding: 3px 6px;
 	}
 }
