@@ -6,6 +6,8 @@
 		<title>Nabeel's Portfolio</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
+
+	<!-- might just remove lowk-->
 	<body>
 		<div id="mobile-warning" class="mobile-warning-overlay">
 			<div class="mobile-warning-content">
@@ -28,7 +30,7 @@
 				><span class="terminal-punctuation">$</span>&nbsp;<span
 					id="terminal-text"
 				></span
-				><span class="terminal-cursor hidden"> |</span>
+				><span class="terminal-cursor hidden">|</span>
 				<!-- Hidden input for mobile keyboard -->
 				<input
 					type="text"
@@ -43,7 +45,6 @@
 			<div class="nav-tabs">
 				<button class="nav-tab active" data-section="home">Home</button>
 				<button class="nav-tab" data-section="projects">Projects</button>
-				<button class="nav-tab" data-section="contact">Contact</button>
 				<a href="https://github.com/youthhalo" target="_blank" title="GitHub"
 					>Github
 					<img src="assets/github-mark.svg" alt="GitHub" />
@@ -52,7 +53,7 @@
 		</nav>
 
 		<main>
-			<!-- Home Section (Combined Profile + About) -->
+			<!-- Home Section -->
 			<section id="home" class="section-slice active">
 				<div id="home-content">
 					<div class="home-profile">
@@ -86,18 +87,26 @@
 				<div class="container">
 					<h2>My Projects</h2>
 					<p class="projects-intro">
-						Click on a project to learn more or select a tag to filter.
+						Hover over a project to learn more or select a tag to filter. All my
+						projects can be found on my
+						<a href="https://github.com/youthhalo" target="_blank">GitHub</a>.
 					</p>
 
 					<!-- Tag Filter -->
 					<div class="tag-filter">
 						<button class="tag-btn active" data-tag="all">All</button>
-						<button class="tag-btn" data-tag="HTML">HTML</button>
+						<button class="tag-btn" data-tag="3D">3D</button>
+						<button class="tag-btn" data-tag="2D">2D</button>
+						<button class="tag-btn" data-tag="CLI">CLI</button>
 						<button class="tag-btn" data-tag="CSS">CSS</button>
-						<button class="tag-btn" data-tag="JavaScript">JavaScript</button>
-						<button class="tag-btn" data-tag="GDScript">GDScript</button>
-						<button class="tag-btn" data-tag="Python">Python</button>
+						<button class="tag-btn" data-tag="Desktop">Desktop</button>
 						<button class="tag-btn" data-tag="Game">Game</button>
+						<button class="tag-btn" data-tag="GDScript">GDScript</button>
+						<button class="tag-btn" data-tag="Godot">Godot</button>
+						<button class="tag-btn" data-tag="HTML">HTML</button>
+						<button class="tag-btn" data-tag="JavaScript">JavaScript</button>
+						<button class="tag-btn" data-tag="Mobile">Mobile</button>
+						<button class="tag-btn" data-tag="Python">Python</button>
 						<button class="tag-btn" data-tag="Web">Web</button>
 					</div>
 
@@ -110,12 +119,12 @@
 							data-tags="HTML,CSS,JavaScript,Web"
 						>
 							<div class="project-topbar">
-								<span class="project-dates">Aug 2024 -<br />Jan 2025</span>
+								<span class="project-dates">Jul 2025 -<br />Jul 2025</span>
 								<span class="project-name">Portfolio Website</span>
 							</div>
 							<div class="project-image-container">
 								<img
-									src=""
+									src="assets/project/portfolio.png"
 									alt="Portfolio Website"
 									class="project-image"
 									style="display: none"
@@ -124,12 +133,7 @@
 								<div class="project-description">This website here!</div>
 							</div>
 							<div class="project-tags">
-								<div class="project-tags-left">
-									<span class="project-tag">HTML</span>
-									<span class="project-tag">CSS</span>
-									<span class="project-tag">JavaScript</span>
-									<span class="project-tag">Web</span>
-								</div>
+								<div class="project-tags-left"></div>
 								<div class="project-icons">
 									<a
 										href="https://github.com/youthhalo/youthhalo.github.io"
@@ -140,21 +144,24 @@
 										<img src="assets/github-mark.svg" alt="GitHub" />
 									</a>
 									<a
-										href="https://youthhalo.github.io"
+										href=""
 										target="_blank"
 										class="project-icon"
 										title="View Demo"
 									>
-										🔗
+										<img src="assets/external-link.png" alt="External Link" />
 									</a>
 								</div>
 							</div>
 						</div>
 
 						<!-- Project 2 -->
-						<div class="custom-project-card" data-tags="GDScript,Game,Godot">
+						<div
+							class="custom-project-card"
+							data-tags="GDScript,Game,Godot,3D,Desktop"
+						>
 							<div class="project-topbar">
-								<span class="project-dates">Dec 2024 -<br />Jan 2025</span>
+								<span class="project-dates">Apr 2025 -<br />Jul 2025</span>
 								<span class="project-name">Fast Paced Boomer Shooter</span>
 							</div>
 							<div class="project-image-container">
@@ -168,14 +175,11 @@
 								<div class="project-description">
 									A 3D FPS Boomer Shooter game with an emphasis on fast-paced
 									airborne combat, built using Godot Engine and GDScript.
+									Currently in pre-alpha and has no build
 								</div>
 							</div>
 							<div class="project-tags">
-								<div class="project-tags-left">
-									<span class="project-tag">GDScript</span>
-									<span class="project-tag">Game</span>
-									<span class="project-tag">Godot</span>
-								</div>
+								<div class="project-tags-left"></div>
 								<div class="project-icons">
 									<a
 										href="https://github.com/youthhalo/Fast-Boomer-Shooter"
@@ -191,16 +195,108 @@
 										class="project-icon"
 										title="View Demo"
 									>
-										🔗
+										<img src="assets/external-link.png" alt="External Link" />
 									</a>
 								</div>
 							</div>
 						</div>
 
 						<!-- Project 3 -->
-						<div class="custom-project-card" data-tags="hello">
+						<div
+							class="custom-project-card"
+							data-tags="GDScript,Game,Godot,3D,Web"
+						>
 							<div class="project-topbar">
-								<span class="project-dates">Jan 1987 -<br />Oct 3000</span>
+								<span class="project-dates">Aug 2024 -<br />Aug 2024</span>
+								<span class="project-name">Minecraft Clone</span>
+							</div>
+							<div class="project-image-container">
+								<img
+									src="assets/project/minecraft clone.png"
+									alt="template meme"
+									class="project-image"
+									style="display: none"
+								/>
+								<div class="project-placeholder"></div>
+								<div class="project-description">
+									An attempt at creating a Minecraft-like engine in Godot 4,
+									using Gridmaps. Very basic and will not be developed further
+									due to the way Gridmaps work.
+								</div>
+							</div>
+							<div class="project-tags">
+								<div class="project-tags-left"></div>
+								<div class="project-icons">
+									<a
+										href="https://github.com/YouthHalo/Minecraft-Clone"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="https://youthhalo.itch.io/minecraft-clone"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										<img src="assets/external-link.png" alt="External Link" />
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Project 4 -->
+						<div
+							class="custom-project-card"
+							data-tags="GDScript,Game,Godot,2D,Web"
+						>
+							<div class="project-topbar">
+								<span class="project-dates">Aug 2024 -<br />Aug 2024</span>
+								<span class="project-name">Snake Clone</span>
+							</div>
+							<div class="project-image-container">
+								<img
+									src="assets/project/snake clone.png"
+									alt="template meme"
+									class="project-image"
+									style="display: none"
+								/>
+								<div class="project-placeholder"></div>
+								<div class="project-description">
+									My first attempt at creating a game in Godot 4. Features basic
+									graphics and simple gameplay. Paved the way for future
+									projects.
+								</div>
+							</div>
+							<div class="project-tags">
+								<div class="project-tags-left"></div>
+								<div class="project-icons">
+									<a
+										href="https://github.com/YouthHalo/Snake-Clone"
+										target="_blank"
+										class="project-icon"
+										title="View on GitHub"
+									>
+										<img src="assets/github-mark.svg" alt="GitHub" />
+									</a>
+									<a
+										href="https://youthhalo.itch.io/snake-clone"
+										target="_blank"
+										class="project-icon"
+										title="View Demo"
+									>
+										<img src="assets/external-link.png" alt="External Link" />
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Template 1 -->
+						<div class="custom-project-card" data-tags="Template">
+							<div class="project-topbar">
+								<span class="project-dates">Jan 1987 -<br />Oct 1988</span>
 								<span class="project-name"
 									>This is where I'd put my cool projects</span
 								>
@@ -221,10 +317,7 @@
 								</div>
 							</div>
 							<div class="project-tags">
-								<div class="project-tags-left">
-									<span class="project-tag">Meme</span>
-									<span class="project-tag">Template</span>
-								</div>
+								<div class="project-tags-left"></div>
 								<div class="project-icons">
 									<a
 										href="#"
@@ -240,14 +333,14 @@
 										class="project-icon"
 										title="View Demo"
 									>
-										🔗
+										<img src="assets/external-link.png" alt="External Link" />
 									</a>
 								</div>
 							</div>
 						</div>
 
-						<!-- Project 4 -->
-						<div class="custom-project-card" data-tags="hello">
+						<!-- Template 2 -->
+						<div class="custom-project-card" data-tags="Template">
 							<div class="project-topbar">
 								<span class="project-dates">Jan 1986 -<br />Oct 1987</span>
 								<span class="project-name">IF I HAD ANY</span>
@@ -260,13 +353,10 @@
 									style="display: none"
 								/>
 								<div class="project-placeholder"></div>
-								<div class="project-description">The Cake is a Lie!</div>
+								<div class="project-description">?</div>
 							</div>
 							<div class="project-tags">
-								<div class="project-tags-left">
-									<span class="project-tag">Meme</span>
-									<span class="project-tag">Template</span>
-								</div>
+								<div class="project-tags-left"></div>
 								<div class="project-icons">
 									<a
 										href="#"
@@ -282,7 +372,7 @@
 										class="project-icon"
 										title="View Demo"
 									>
-										🔗
+										<img src="assets/external-link.png" alt="External Link" />
 									</a>
 								</div>
 							</div>
@@ -290,22 +380,9 @@
 					</div>
 				</div>
 			</section>
-
-			<!-- Contact Section -->
-			<!-- Will combine with Home Section Later maybe idk-->
-			<section id="contact" class="section-slice">
-				<div class="container">
-					<h2>Get In Touch</h2>
-					<div class="contact-links">
-						<a id="github-link" href="#" target="_blank">GitHub</a>
-						<a id="email-link" href="#">Email</a>
-					</div>
-				</div>
-			</section>
 		</main>
 
 		<footer>
-			<!-- I dont want the thing to be boring icl-->
 			<p>&copy; 2025 Nabeel Ahmad.</p>
 		</footer>
 

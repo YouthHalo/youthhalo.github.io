@@ -3,6 +3,16 @@
 	padding: 0;
 	box-sizing: border-box;
 	text-align: center;
+	user-select: none;
+}
+
+a {
+	text-decoration: none;
+	color: lightskyblue;
+}
+
+a:hover {
+	color: lightblue;
 }
 
 body {
@@ -66,6 +76,7 @@ nav {
 	white-space: pre;
 	text-overflow: ellipsis;
 	display: inline-block;
+	color: white;
 }
 
 .terminal-cursor {
@@ -159,6 +170,10 @@ nav {
 .terminal-nav .nav-tab.active {
 	background: #00ff00;
 	color: #1a1a1a;
+}
+
+.terminal-punctuation {
+	color: #ffffff;
 }
 
 /* Main Content */
@@ -300,7 +315,7 @@ section h2 {
 /* Custom Projects Grid */
 .custom-projects-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 	gap: 2rem;
 	margin-top: 2rem;
 }
@@ -469,31 +484,6 @@ section h2 {
 	display: none;
 }
 
-/* Contact Section */
-.contact-links {
-	display: flex;
-	justify-content: center;
-	gap: 2rem;
-	flex-wrap: wrap;
-}
-
-.contact-links a {
-	color: #4a9eff;
-	text-decoration: none;
-	font-size: 1.2rem;
-	padding: 1rem 2rem;
-	border: 2px solid #4a9eff;
-	border-radius: 10px;
-	transition: all 0.3s ease;
-}
-
-.contact-links a:hover {
-	background: #4a9eff;
-	color: #1a1a1a;
-	transform: translateY(-3px);
-}
-
-/* Footer */
 footer {
 	text-align: left;
 	padding: 0rem 0rem;
@@ -634,7 +624,6 @@ footer {
 
 /* To make the terminal hidden on a Note 9, unknown if it works on other deviced icl */
 @media (max-width: 480px) {
-
 	.terminal-nav .nav-tab,
 	.terminal-nav a {
 		font-size: 18px;

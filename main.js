@@ -59,6 +59,37 @@ function initProjectIcons() {
 // Initialize project icons when page loads
 document.addEventListener("DOMContentLoaded", initProjectIcons);
 
+// Project Tags System - Generate tags from data-tags attribute
+function initProjectTags() {
+	// Find all project cards
+	document.querySelectorAll(".custom-project-card").forEach((card) => {
+		const dataTagsAttr = card.getAttribute("data-tags");
+		const tagsContainer = card.querySelector(".project-tags-left");
+
+		if (dataTagsAttr && tagsContainer) {
+			// Clear existing tags
+			tagsContainer.innerHTML = "";
+
+			// Parse and sort tags alphabetically
+			const tags = dataTagsAttr
+				.split(",")
+				.map((tag) => tag.trim())
+				.sort((a, b) => a.localeCompare(b));
+
+			// Create and append tag elements
+			tags.forEach((tag) => {
+				const tagElement = document.createElement("span");
+				tagElement.className = "project-tag";
+				tagElement.textContent = tag;
+				tagsContainer.appendChild(tagElement);
+			});
+		}
+	});
+}
+
+// Initialize project tags when page loads
+document.addEventListener("DOMContentLoaded", initProjectTags);
+
 // Section Navigation System - Controls terminal-style page navigation
 function showSection(sectionId, updateHistory = true) {
 	// Hide all section slices by removing 'active' class
@@ -82,7 +113,6 @@ function showSection(sectionId, updateHistory = true) {
 	const pathMap = {
 		home: "~",
 		projects: "/projects",
-		contact: "/contact",
 	};
 	document.getElementById("current-path").textContent = pathMap[sectionId];
 
@@ -91,7 +121,6 @@ function showSection(sectionId, updateHistory = true) {
 		const urlMap = {
 			home: "/",
 			projects: "/projects",
-			contact: "/contact",
 		};
 		const newUrl = urlMap[sectionId];
 		history.pushState({ section: sectionId }, "", newUrl);
@@ -109,20 +138,18 @@ window.addEventListener("popstate", (event) => {
 		const sectionMap = {
 			"/": "home",
 			"/projects": "projects",
-			"/contact": "contact",
 		};
 		const section = sectionMap[path] || "home";
 		showSection(section, false);
 	}
 });
 
-// Page Initialization - Determine which section to show based on current URL
+//Determine which section to show based on current URL
 function initializePage() {
 	const path = window.location.pathname;
 	const sectionMap = {
 		"/": "home",
 		"/projects": "projects",
-		"/contact": "contact",
 	};
 	const section = sectionMap[path] || "home";
 	showSection(section, false);
@@ -138,14 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-// Projects System - Handle tag filtering for HTML-based projects
+//Handle tag filtering for HTML-based projects
 function initializeProjects() {
 	sortProjectsByDate();
 	setupTagFiltering();
 	setupProjectImages();
 }
 
-// Sort Projects by Creation Date - Automatically sort projects from newest to oldest
+// Automatically sort projects from newest to oldest
 function sortProjectsByDate() {
 	const projectsContainer = document.getElementById("projects-grid");
 	if (!projectsContainer) return;
@@ -169,7 +196,7 @@ function sortProjectsByDate() {
 	});
 }
 
-// Extract Creation Date - Parse the first date from project-dates span
+// Parse the first date from project-dates span
 function getCreationDate(projectCard) {
 	const datesElement = projectCard.querySelector(".project-dates");
 	if (!datesElement) return new Date(0); // Fallback to epoch if no date
@@ -181,12 +208,12 @@ function getCreationDate(projectCard) {
 	return parseProjectDate(firstDate);
 }
 
-// Parse Project Date - Convert date string to Date object
+// convert date string to Date object
 function parseProjectDate(dateString) {
 	// Clean up the date string
 	const cleanDate = dateString.trim();
 
-	// Month mapping for abbreviations and full names
+	// Month mapping for abbreviations and full names DO NOT NEED THE FULL SIZE NAMES
 	const monthMap = {
 		jan: 0,
 		january: 0,
@@ -229,7 +256,7 @@ function parseProjectDate(dateString) {
 	return isNaN(fallbackDate.getTime()) ? new Date(0) : fallbackDate;
 }
 
-// Setup Project Images - Handle image loading and fallbacks
+//Handle image loading and fallbacks
 function setupProjectImages() {
 	document.querySelectorAll(".custom-project-card").forEach((card) => {
 		const img = card.querySelector(".project-image");
@@ -258,7 +285,7 @@ function setupProjectImages() {
 	});
 }
 
-// Tag Filtering System - Handle project filtering by tags
+//Handle project filtering by tags
 function setupTagFiltering() {
 	const tagButtons = document.querySelectorAll(".tag-btn");
 
@@ -317,12 +344,6 @@ function updateProfile(user) {
 	document.getElementById("github-followers").textContent = user.followers;
 	// Update repository count
 	document.getElementById("github-repos").textContent = user.public_repos;
-	// Update GitHub profile link
-	document.getElementById("github-link").href = user.html_url;
-	// Update email link (if email is public)
-	document.getElementById("email-link").href = `mailto:${
-		user.email || "contact@example.com"
-	}`;
 }
 
 // Terminal Text Input System - Click-to-focus terminal input
@@ -541,24 +562,12 @@ function handleCdCommand(args) {
 	const sectionMap = {
 		"~": "home",
 		projects: "projects",
-		contact: "contact",
 		"..": "home", // Go back to home
 		"/": "home",
 	};
 
 	// check if target valid
 	if (!sectionMap[target]) {
-		showTempMessage(`cd: ${target}: No such file or directory`);
-		return;
-	}
-
-	// Prevent direct navigation between projects and contact
-	if (currentPath === "/projects" && target === "contact") {
-		showTempMessage(`cd: ${target}: No such file or directory`);
-		return;
-	}
-
-	if (currentPath === "/contact" && target === "projects") {
 		showTempMessage(`cd: ${target}: No such file or directory`);
 		return;
 	}
@@ -576,7 +585,7 @@ function handleNeofetchCommand() {
 // Handle LS Command - Show available sections
 function handleLsCommand() {
 	if (window.location.pathname === "/") {
-		showTempMessage("home  projects  contact", "#4a9eff");
+		showTempMessage("projects", "#4a9eff");
 	} else {
 		return;
 	}
@@ -601,7 +610,6 @@ function handle404Redirect() {
 		const sectionMap = {
 			"/": "home",
 			"/projects": "projects",
-			"/contact": "contact",
 		};
 		const section = sectionMap[originalPath] || "home";
 		showSection(section, false);
